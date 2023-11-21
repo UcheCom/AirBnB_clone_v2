@@ -69,6 +69,8 @@ class TestHBNBConsole(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as test:
             self.console.onecmd("create Amenity")
             new_amenity = test.getvalue().strip()
+        with patch('sys.stdout', new=StringIO()) as test:
+            self.console.onecmd('create State name="California"')
 
     def test_all(self):
         """Tests the all cmd"""
