@@ -31,7 +31,8 @@ class BaseModel:
         """
         if not kwargs:
             self.id = str(uuid4())
-            self.created_at = self.updated_at = datetime.utcnow()
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
         else:
             for k, v in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
@@ -58,11 +59,12 @@ class BaseModel:
 
     def to_dict(self):
         """Convert instance into dict format"""
-        my_dic = self.__dict__.copy()
+        my_dic = dict(self.__dict__)
         my_dic["__class__"] = str(type(self). __name__)
         my_dic["created_at"] = self.created_at.isoformat()
         my_dic["updated_at"] = self.updated_at.isoformat()
-        my_dic.pop("_sa_instance_state", None)
+        if '_sa_instance_state' in my_dic.keys():
+            del my_dic['_sa_instance_state']
         return my_dic
 
     def delete(self):
