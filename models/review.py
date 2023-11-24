@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, ForeignKey
 
 
 class Review(BaseModel, Base):
-    """ Review classto store review information 
+    """ Review classto store review information
     Attributes:
         test: string(1024)
         place_id: string(60) Foreign key
