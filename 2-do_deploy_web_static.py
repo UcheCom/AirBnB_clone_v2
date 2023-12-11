@@ -4,7 +4,7 @@
 """
 
 from fabric.api import put, run, local, env
-from os import exists
+from os.path import exists
 
 env.hosts = ["3.80.19.118", "3.83.18.66"]
 
