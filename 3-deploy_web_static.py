@@ -29,7 +29,7 @@ def do_deploy(archive_path):
     """Fabric script distributes an archive to your web servers
     """
 
-    if not exists(archive_path):
+    if exists(archive_path) is False:
         return False
     try:
         file_name = archive_path.split("/")[-1]
@@ -44,7 +44,7 @@ def do_deploy(archive_path):
         run('rm -rf /data/web_static/current')
         run('ln -s {}{}/ /data/web_static/current'.format(path, noext))
         return True
-    except Exception:
+    except:
         return False
 
 
