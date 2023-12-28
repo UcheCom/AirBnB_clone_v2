@@ -7,7 +7,6 @@ from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
 
-
 Base = declarative_base()
 
 
@@ -20,8 +19,8 @@ class BaseModel:
     """
 
     id = Column(String(60), primary_key=True, nullable=False)
-    created_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
-    updated_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
         """Instantiates a new mode
@@ -42,10 +41,8 @@ class BaseModel:
 
     def __str__(self):
         """Returns a string representation of the instance"""
-        cls = type(self).__name__
-        if '_sa_instance_state' in self.__dict__:
-            del self.__dict__['_sa_instance_state']
-        return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
+        clss = self.__class__.__name__
+        return '[{:s}] ({:s}) {}'.format(clss, self.id, self.__dict__)
 
     def __repr__(self):
         """Returns a string reprensatation"""

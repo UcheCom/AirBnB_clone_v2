@@ -8,6 +8,7 @@ from models.review import Review
 from models.state import State
 from models.user import User
 from sqlalchemy import (create_engine)
+import models
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
 

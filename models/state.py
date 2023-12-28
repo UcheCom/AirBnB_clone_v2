@@ -11,12 +11,10 @@ from os import getenv
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
-
     name = Column(String(128), nullable=False)
-    cities = relationship("City", cascade="delete",
-                          backref="state")
+    cities = relationship("City", backref="state")
 
-    if getenv('HBNB_TYPE_STORAGE') != 'db':
+    if getenv('HBNB_TYPE_STORAGE') != "db":
         @property
         def cities(self):
             """Retrieves a list of all related city instances
