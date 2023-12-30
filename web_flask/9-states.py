@@ -6,7 +6,7 @@ Routes:
     /states/<id>: display a HTML page: (inside the tag BODY)
 """
 
-import sqlalchemy
+from models import *
 from flask import Flask, render_template
 from models.state import State
 from models import storage
