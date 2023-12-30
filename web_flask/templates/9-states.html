@@ -3,8 +3,15 @@
     <HEAD>
         <TITLE>HBNB</TITLE>
     </HEAD>
-    <BODY>
-      {% if State %}
+      <BODY>
+      {% if state is mapping %}
+        <H1>States</H1>
+	<UL>
+	  {% for state in states.values()|sort(attribute='name') %}
+	      <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
+	  {% endfor %}
+	</UL>
+      {% elif state is defined %}
         <H1>State: {{ state.name }}</H1>
 	<H3>Cities</H3>
          <UL>
