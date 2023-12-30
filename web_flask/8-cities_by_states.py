@@ -2,7 +2,7 @@
 """ Starts a  Flask web application
 Application must be listening on 0.0.0.0, port 5000
 Routes:
-    /states_list: displays a HTML page of State objects present in DBStorage
+    /cities_by_states: displays a HTML page of State/city objects present in DBStorage
 """
 
 import sqlalchemy
